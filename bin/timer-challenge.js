@@ -7,7 +7,7 @@
 
 const delay = 1;
 
-function displayRecursively (iterations, message = null, count = 1) {
+function displayRecursively(iterations, message = null, count = 1) {
   if (message)
     console.log(message);
 
