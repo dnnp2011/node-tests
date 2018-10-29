@@ -1,0 +1,9 @@
+# Node
+/node_modules
+*package-lock.*
+
+# IDE
+/idea
+.idea*
+*.idea*
+*/idea/*
