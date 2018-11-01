@@ -1,0 +1,18 @@
+{
+  "name": "dnnp2011-frame-print",
+  "version": "1.0.0",
+  "description": "A simple package this will print the input strong in the console surrounded by a * frame. Length adjusts to string size automatically.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./index.js framePrint \"Testing FramePrint Output\""
+  },
+  "keywords": [
+    "Command-line",
+    "CLI",
+    "print",
+    "log",
+    "frame"
+  ],
+  "author": "Dalton P",
+  "license": "ISC"
+}

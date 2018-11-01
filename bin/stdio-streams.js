@@ -10,6 +10,7 @@ process.argv.map((arg, index) => {
 let once = false;
 
 function echoCliInput() {
+  console.log(__dirname);
   process.stdin.on('readable', () => {
     !once && process.stdout.write('Enter a word: ');
     once = true;
