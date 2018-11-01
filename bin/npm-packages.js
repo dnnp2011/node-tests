@@ -1,5 +1,5 @@
 // Import my NPM package
-const framePrint = require('../frame-print');
+const framePrint = require('../dnnp2011-frame-print');
 
 framePrint('Welcome to NPM!');
 
