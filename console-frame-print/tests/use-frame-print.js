@@ -1,5 +1,5 @@
 // Import my NPM package
-const framePrint = require('../console-frame-print');
+const framePrint = require('../index');
 
 framePrint('NPM Is Awesome!');
 
@@ -9,4 +9,5 @@ framePrint('NPM Is Awesome!');
     ***************
     NPM Is Awesome!
     ***************
+
  */
