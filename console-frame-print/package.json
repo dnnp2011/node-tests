@@ -1,6 +1,6 @@
 {
   "name": "console-print-frame",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple package this will print the input strong in the console surrounded by a * frame. Length adjusts to string size automatically.",
   "main": "index.js",
   "scripts": {
