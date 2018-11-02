@@ -2,9 +2,10 @@
 Console Frame Print is a small and simple package that prints your input to the console, after surrounding it with a frame of asterisks (*). The length of the frame scale dynamically with the length of the input string, and there is basic error catching to inform the user of a syntax error.
 
 ## Pictures
-* [Sample Usage](./assets/images/frame-print-sample-usage.png "Sample Usage")
+* [CLI Test Usage](https://i.imgur.com/KW1qAah.png)
 
-* [Sample Output](./assets/images/frame-print-sample-output.png "Sample Output")
+* [Project Usage](https://i.imgur.com/ix52nmv.png)
+
 ## Installation
 Add the NPM package to your project by running ```npm i console-frame-print```.
 
