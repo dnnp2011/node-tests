@@ -48,9 +48,9 @@ function framePrint(msg) {
 
   // Interpolate the msg and frame
   console.log(`
-    ${border}\n
-    ${msg}\n
-    ${border}\n
+    ${border}
+    ${msg}
+    ${border}
     `);
 };
 
