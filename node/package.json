@@ -1,0 +1,16 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Variety of node files for testing and learning Nodejs",
+  "main": "web-servers.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon web-servers.js"
+  },
+  "author": "Drowsy Dev",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "pug": "^2.0.3"
+  }
+}

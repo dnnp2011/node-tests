@@ -1,0 +1,9 @@
+body {
+    background: tomato;
+    display: flex;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}

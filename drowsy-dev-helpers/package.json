@@ -1,0 +1,16 @@
+{
+  "name": "drowsy-dev-helpers",
+  "version": "1.0.0",
+  "description": "A collection of helper functions, prototypes, and other tools and utilities for DrowsyDev projects",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "Tools",
+    "Utilities",
+    "Utils",
+    "Helper",
+    "Prototypes"
+  ],
+  "author": "DrowsyDev",
+  "license": "ISC"
+}

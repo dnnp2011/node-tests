@@ -1,9 +1,12 @@
 # Node
 /node_modules
-*/node_modules
 
 # IDE
 /idea
 .idea*
 *.idea*
 */idea/*
+
+# Git
+.gitignore
+*/.gitignore

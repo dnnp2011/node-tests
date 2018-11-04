@@ -18,9 +18,8 @@ files.forEach(file => {
                console.warn('Performing a read operation on directory \'%s\'...', file);
                break;
            default:
-               console.error('\r\n', e);
-               framePrint('Continuing execution');
-               break;
+               framePrint('Halting execution');
+               throw e;
        }
    }
 });

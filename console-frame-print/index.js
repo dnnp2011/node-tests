@@ -2,7 +2,7 @@
   For testing purposes,
   This blocks allows the framePrint function to be called with multiple arguments directly from a node Command Line Interface.
  */
-if (process.argv.length > 2) {
+/*if (process.argv.length > 2) {
   // Loop through the command line arguments
   process.argv.map((arg, index) => {
     switch (arg) {
@@ -16,7 +16,7 @@ if (process.argv.length > 2) {
           for (let i = 1; i <= argNum; i++) {
             // Assign and pass each argument to the framePrint function
             let thisArg = process.argv[(index) + i];
-            framePrint(thisArg);
+              framePrint(thisArg);
           }
         }
         break;
@@ -24,8 +24,12 @@ if (process.argv.length > 2) {
         break;
     }
   });
-}
+}*/
 
+
+
+// console.dir(Object.keys(exports));
+// cli();
 /*
   Logs the String input to the console, surrounded by a * frame of dynamic length.
  */
@@ -52,7 +56,8 @@ function framePrint(msg) {
     ${msg}
     ${border}
     `);
-};
-
+}
 // Export the function
-module.exports = framePrint;
+// module.exports = framePrint;
+module.exports.framePrint = framePrint;
+require('../cli-run');
