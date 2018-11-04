@@ -53,5 +53,5 @@ function framePrint(msg) {
 }
 // Export the function
 // module.exports = framePrint;
-module.exports.framePrint = framePrint;
+module.exports = framePrint;
 require('../cli-run');
