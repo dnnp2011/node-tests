@@ -2,7 +2,10 @@
 const express = require('express'); // The top-level express object contains a Router object
 const router = express.Router();
 const path = require('path');
-require('../drowsy-dev-helpers');
+// const {numbers} = require('../drowsy-dev-helpers');
+require('../drowsy-dev-helpers')();
+let x = 2;
+console.log(x.between(0, 4));
 
 const port = process.env.PORT || 4242;
 
