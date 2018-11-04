@@ -114,7 +114,7 @@ class DevLogger extends EventEmitter {
     }
 
     setFile(file) {
-        this.filePath = DefaultLogPath + '/' + file;
+        this.logFile = this.filePath + '/' + file;
     }
 }
 
