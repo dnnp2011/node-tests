@@ -3,7 +3,7 @@ A collection of Javascript prototypes, helper functions, utilities, and other ge
 
 ## Installation
 Add the NPM package to your project by running:
-> ```npm install drowsy-dev-helpers```
+> ```npm install --save drowsy-dev-helpers```
 
 Or install globally with
 > ```npm install -g drowsy-dev-helpers```

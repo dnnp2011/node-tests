@@ -3,6 +3,7 @@ module.exports = (function (){
     const util = require('util'), fs = require('fs');
     const readFile = util.promisify(fs.readFile);
 
+    //TODO: Wrap in a setImmediate function so that the file can be required at the top of a file but still have access to the loaded version. Run module.loaded to check
     //TODO: Handle non-exported functions
     //TODO: Make pieces more modular
     //TODO: Finish implementing planned functionality

@@ -10,7 +10,7 @@ Console Frame Print is a small and simple package that prints your input to the 
 
 ## Installation
 Add the NPM package to your project by running:
-> ```npm i console-frame-print```
+> ```npm i --save console-frame-print```
 
 ## Usage
 To make use of the FramePrint function, import the function to your file by binding it to a variable after installation:

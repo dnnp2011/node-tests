@@ -44,17 +44,11 @@ function framePrint(msg) {
     return;
   }
 
-  // Build the frame based on msg length
-  let border = '';
-  for (let i = 0; i < length; i++) {
-    border += '*';
-  }
-
   // Interpolate the msg and frame
   console.log(`
-    ${border}
+    ${'*'.repeat(length)}
     ${msg}
-    ${border}
+    ${'*'.repeat(length)}
     `);
 }
 // Export the function
