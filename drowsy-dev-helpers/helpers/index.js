@@ -11,3 +11,5 @@ global.tryParseInt = function (a, base = 10) {
     else
         return parsed;
 };
+
+global.getCliPrompt = (inject = '') => process.stdout.write(`\u001B[2J\u001B[0;0f${inject}\n\>`);
