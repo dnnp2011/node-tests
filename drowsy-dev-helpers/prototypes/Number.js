@@ -14,5 +14,5 @@ Number.prototype.between = function (a, b, inclusive = false) {
         throw new TypeError(`Number.prototype.between called on ${this} was expecting arguments of type number, but instead received ${typeof b}`);
 
     let min = Math.min(a, b), max = Math.max(a, b);
-    return inclusive ? min <= this && this <= max : min < this && this < max;
+    return inclusive ? this >= min && this <= max : this > min && this < max;
 };
