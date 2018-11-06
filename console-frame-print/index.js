@@ -33,7 +33,7 @@
 /*
   Logs the String input to the console, surrounded by a * frame of dynamic length.
  */
-function framePrint(msg) {
+function framePrint(msg, log = false) {
   // Get msg length
   const length = msg.length;
 
@@ -44,12 +44,14 @@ function framePrint(msg) {
     return;
   }
 
-  // Interpolate the msg and frame
-  console.log(`
+  let print = `
     ${'*'.repeat(length)}
     ${msg}
     ${'*'.repeat(length)}
-    `);
+    `;
+
+  // Interpolate the msg and frame
+  return log ? console.log(print) : print;
 }
 // Export the function
 // module.exports = framePrint;
