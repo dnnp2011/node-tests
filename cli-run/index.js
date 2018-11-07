@@ -1,7 +1,12 @@
+
+
+
 module.exports = (function (){
     const funcs = Reflect.getOwnPropertyDescriptor(this, 0);
     const util = require('util'), fs = require('fs');
     const readFile = util.promisify(fs.readFile);
+    const rewire = require('rewire');
+
 
     //TODO: Wrap in a setImmediate function so that the file can be required at the top of a file but still have access to the loaded version. Run module.loaded to check
     //TODO: Handle non-exported functions
@@ -11,14 +16,31 @@ module.exports = (function (){
     //TODO: Potential functionality:
     // Loop through all functions in parent, and call with randomly generated arguments (type checking)
     // Create common case testing modules for functions (to test common edge cases)
+    process.nextTick(function() {
+        console.log(this.process.mainModule.exports);
+        const parent = rewire(this.process.mainModule.filename);
+        console.dir(parent.__get__('myNonExportedFunction').apply());
+        // console.log(this.process.mainModule.filename);
+        // console.dir((require(this.process.mainModule.filename)));
 
-    const main = this.process.mainModule.exports;
+    });
+
+    // Returns whether the mainModule is an Object. If yes, then there are multiple exports, if not, there is only one top-level export.
+    const hasMultiExports = (mainModule) => mainModule instanceof Object;
+
+    // Returns an iterable (array) of module exports from the requiring file
+    const getExportsAsIterable = (mainModule) => {
+        // process.main.exports
+    };
+
+    /*const main = this.process.mainModule.exports;
     if (process.argv.length > 2) {
         process.argv.forEach((arg, index, array) => {
             if (index <= 1)
                 return;
             else {
                 // console.log(Object.keys(this.process.mainModule.exports));
+                // Checks if there is a single main function export, or multiple function exports
                 if (main instanceof Object) {
                     if (main.name === arg) {
                         const requiredArgs = main.length;
@@ -78,5 +100,12 @@ module.exports = (function (){
                 }
             }
         });
-    }
+    }*/
 })();
+
+/*
+module.exports = ()=> {
+    process.nextTick(function() {
+        console.log(Reflect.getOwnPropertyDescriptor(module, 'exports').value);
+    });
+};*/

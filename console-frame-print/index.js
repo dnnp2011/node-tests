@@ -53,7 +53,17 @@ function framePrint(msg, log = false) {
   // Interpolate the msg and frame
   return log ? console.log(print) : print;
 }
+
+function myNonExportedFunction() {
+  console.log("My non exported function called");
+}
 // Export the function
 // module.exports = framePrint;
 module.exports = framePrint;
+module.exports.anotherExport = () => {
+  console.log("Hello");
+};
+// console.dir(Reflect.has("framePrint"), {depth: 1});
+// console.log(framePrint("Hello World"))
+
 require('../cli-run');
