@@ -174,7 +174,7 @@ function getClientList() {
         acc += `Id: ${id} Username: ${username}\n`;
         return acc;
     }, '');
-}
+}+
 
 server.on('close', () => {
     console.log('Shutting Down...');
