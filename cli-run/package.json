@@ -1,0 +1,15 @@
+{
+  "name": "cli-run",
+  "version": "1.0.0",
+  "description": "A minimalistic code testing tool that allows running of module function(s) with a set or many sets of arguments directly from the command line",
+  "main": "index.js",
+  "dependencies": {
+    "rewire": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DrowsyDev",
+  "license": "ISC"
+}
