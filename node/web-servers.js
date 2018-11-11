@@ -4,8 +4,6 @@ const router = express.Router();
 const path = require('path');
 // const {numbers} = require('../drowsy-dev-helpers');
 require('../drowsy-dev-helpers')();
-let x = 2;
-console.log(x.between(0, 4));
 
 const port = process.env.PORT || 4242;
 

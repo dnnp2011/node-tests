@@ -4,11 +4,14 @@
   "description": "A minimalistic code testing tool that allows running of module function(s) with a set or many sets of arguments directly from the command line",
   "main": "index.js",
   "dependencies": {
-    "rewire": "^4.0.1"
+    "console-print-frame": "^1.1.5",
+    "moment": "^2.22.2",
+    "rewire": "^4.0.1",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./test/cli-run-test"
   },
   "author": "DrowsyDev",
   "license": "ISC"
