@@ -228,11 +228,13 @@ module.exports = (function() {
                             if (isStaticMethod(exported, funcName) || isClassInstantiated(exported)) {
                                 let funcRef = exported[funcName];
                                 // !! Push method to new function group
+                                console.debug(`Class Ref, Is Top Level, Not Primitive, Is Constructable, Is Static Method, Push to new function group`);
                             }
 
                             /* The class has Not been Instantiated */
                             else {
                                 // !! Push method to new function group with class instantiation flag
+                                console.debug(`Class Res, Is Top Level, Not Primitive, Is Constructable, Is Instance Method, Push to new function group with class instantiation flag`);
                             }
                         }
                         else {
@@ -276,10 +278,11 @@ module.exports = (function() {
                                         if (isStaticMethod(classRef, funcName)) {
                                             let funcRef = classRef[funcName];
                                             // !! Valid static class method, push to new function group
+                                            console.debug(`Class Ref, Named Export, Not Primitive, Is Constructable, Has Function, Function Not Primitive, Is Static Method, Push to new function group`);
                                         }
                                         else {
                                             // !! Valid class method, push to new function group with class instantiation flag
-                                            console.debug(`Class Ref, Export, Not Instantiated, Typeof Function`);
+                                            console.debug(`Class Ref, Named Export, Not Primitive, Is Constructable, Has Function, Function Not Primitive, Is Instance Method, Push to new function group with class instantiation flag`);
                                         }
                                     }
 
@@ -318,16 +321,65 @@ module.exports = (function() {
                         else throw e;
                     }
 
+                    /* The Class Ref Exists In Module */
                     if (classRef) {
-                        /* The Class Property Exists */
                         if (classHasProp(classRef, funcName)) {
                             if (classPropNotPrimitive(classRef, funcName)) {
-                                /* The class is already instantiated, check for the method */
-                                if (isClassInstantiated(classRef)) {
-                                    //TODO: Do check on instantiated classes to see if function is static. Static functions don't have prototypes.
-                                    let funcRef = classRef[funcName];
+                                if (classPropIsFunction(classRef, funcName)) {
+                                    if (isStaticMethod(classRef, funcName)) {
+                                        let funcRef = classRef[funcName];
+                                        // !! Push to new function group
+                                        console.debug(`Class Ref, Not Export, Class Exists, Prop Exists, Prop Not Primitive, Prop Is Method, Method Is Static, Push to new function group`);
+                                    }
+                                    /* Is Instance Method */
+                                    else {
+                                        /* Check If Class Is Pre-instantiated */
+                                        if (isClassInstantiated(classRef)) {
+                                            let funcRef = classRef[funcName];
+                                            // !! Push to new function group
+                                            console.debug(`Class Ref, Not Export, Class Exists, Prop Exists, Prop Not Primitive, Prop Is Method, Instance Method, Class Is Instantiated, Push to new function group`);
+                                        }
+                                        else {
+                                            // !! Push to new function group with instance method flag
+                                            console.debug(`Class Ref, Not Export, Class Exists, Prop Exists, Prop Not Primitive, Prop Is Method, Instance Method, Class Not Instantiated, Push to new function group with instance method flag`);
+                                        }
+                                    }
                                 }
-                                /* The class is not instantiated */
+                                /* Class Prop Is Not a Function */
+                                else {
+                                    // !! Prop is not a function, treat as arg. Requires instantiation
+                                    console.debug(`Class Ref, Not Export, Class Exists, Prop Exists, Prop Not Primitive, Prop Is Object, Treat as arg? Requires instantiation`);
+                                }
+                            }
+                            /* Prop Is Primitive */
+                            else {
+                                // !! Prop is a primitive, treat as arg. Requires instantiation
+                                console.debug(`Class Ref, Not Export, Class Exists, Prop Exists, Prop Is Primitive. Treat as arg, requires instantiation`);
+                            }
+                        }
+                        /* Class Does Not Have Prop */
+                        else {
+                            throwSoftException(`The class ${className} exists, but does not have a property called ${funcName}. Check your reference.`);
+                        }
+
+                        /*/!* The Class Property Exists *!/
+                        if (classHasProp(classRef, funcName)) {
+                            if (classPropNotPrimitive(classRef, funcName)) {
+                                /!* The class is already instantiated, check for the method *!/
+                                if (isClassInstantiated(classRef)) {
+                                    /!* Class Method is Static *!/
+                                    if (isStaticMethod(classRef, funcName)) {
+                                        let funcRef = classRef[funcName];
+                                        // !! Static method, push ref to new function group
+                                        console.debug(`Class Ref, Not an Export, `)
+                                    }
+
+                                    /!* Class Method is Instance Method *!/
+                                    else {
+
+                                    }
+                                }
+                                /!* The class is not instantiated *!/
                                 else {
                                     if (classHasProp(classRef, funcName)) {
                                         if (classPropNotPrimitive(classRef, funcName)) {
@@ -354,17 +406,17 @@ module.exports = (function() {
                                 }
                             }
 
-                            /* Class Property Exists But Is Primitive */
+                            /!* Class Property Exists But Is Primitive *!/
                             else {
                                 // !! Property is a primitive, treat as argument
                                 console.debug(`Class Ref, Not Export`);
                             }
                         }
 
-                        /* The Class Property Does Not Exist */
+                        /!* The Class Property Does Not Exist *!/
                         else {
                             throwSoftException(`The class ${className} exists, but does not have a valid property called ${funcName}. Check your reference.`);
-                        }
+                        }*/
                     }
 
                     /* The left side is not a valid class. Treat it as a decimal input. */
@@ -388,16 +440,26 @@ module.exports = (function() {
                 let funcName = input.trim().replace(/[^a-zA-Z0-9_\-]+/g, '');
                 /* If Top-Level Export */
                 if (isTopLevelExport(funcName, exported)) {
-                    /* Class is Pre-Instantiated */
-                    if (isClassInstantiated(exported)) {
-                        // !! Class is exported as instantiated object. Could either be an argument, or a ctor test to call again
-                        console.debug(`The class ${funcName} is an instantiated top-level export. Not sure to treat this as an argument or a function to be instantiated again.`);
-                    }
+                    /* Export Not A Primitive */
+                    if (!isPrimitive(exported)) {
+                        //TODO: Continue from here
+                        if (isClassInstantiated(funcName)) {
+                            if (isConstructable(exported)) {
 
-                    /* Class is Not Instantiated */
+                            }
+                            else {
+
+                            }
+                        }
+                        /* Must be an instantiated object */
+                        else {
+
+                        }
+                    }
+                    /* Export Is A Primitive */
                     else {
-                        // !! Push to new function group with class instantiation flag
-                        console.debug(`IS Export, Is Top-Level Export, Not Instantiated Class, Push to new Function Group`);
+                        // !! Is a primitive, treat as arg
+                        console.debug(`Not Class Ref, IS Top Level, Is Primitive, treat as arg is last function group`);
                     }
                 }
 
