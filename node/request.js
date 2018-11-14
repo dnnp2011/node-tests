@@ -1,19 +1,31 @@
-const http = require('http');
+const https = require('https');
 
-const req = http.request({
-    hostname: 'www.google.com',
-    method: 'GET',
-}, res => {
-    console.log(res.statusCode);
-    console.log(res.headers);
+// req: http.ClientRequest
+function doReq() {
+    const req = https.request({
+        hostname: 'www.google.com',
+        method: 'GET',
+    }, res => {
+        // res: http.IncomingMessage
+        console.log(res.statusCode);
+        console.log(res.headers);
 
-    res.on('data', (data) => {
-        console.log('Data ', data);
-    })
+        /* Returns a Buffer */
+        res.on('data', (data) => {
+            console.log('Google: ', data);
+        });
+    });
+    req.on('error', err => {
+        console.error(err);
+    });
+    console.log(req.agent);
+    req.end();
+}
+
+/* Done using the global HTTP Agent */
+const get = https.get("https://www.duckduckgo.com", res => {
+    res.on('data', data => console.log('DuckDuckGo: ', data.toString()));
 });
+// agent: http.Agent
+console.log(get.agent);
 
-req.on('error', err => {
-    console.error(err);
-});
-
-req.end();

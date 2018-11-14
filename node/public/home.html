@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Home</title>
+    <style>
+        body {
+            background-color: cadetblue;
+            display: flex;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            margin: auto;
+            padding: 20px;
+            color: whitesmoke;
+            text-align: center;
+            justify-content: center;
+        }
+        table {
+            margin: auto;
+            padding: 10px;
+        }
+        .header {
+            margin: 20px auto 20px auto;
+            padding: 3px;
+            color: darkred;
+            font-weight: bold;
+            width: 100%;
+        }
+        .body {
+            margin: auto;
+            padding: 5px 30px 5px 30px;
+            font-weight: normal;
+            font-size: 16pt;
+            height: 60vh;
+        }
+        .footer {
+            float: bottom;
+            width: 70%;
+            margin: auto;
+        }
+        .footer-table {
+            padding: 8px;
+            float: bottom;
+            width: 80%;
+        }
+        .footer-table tr {
+            display: flex;
+            flex-direction: row;
+            -webkit-flex-direction: row;
+            justify-content: space-evenly;
+            margin: auto;
+            padding: 5px;
+        }
+        a {
+            font-style: normal;
+            font-weight: lighter;
+            color: white;
+            text-decoration: underline;
+            text-decoration-style: -moz-none;
+        }
+        .header-table {
+            width: 100%;
+            margin: auto;
+            padding: 20px;
+        }
+        .header-table tr {
+            width: 70%;
+            margin: auto;
+            padding: 5px;
+            display: flex;
+            flex-direction: row;
+            -webkit-flex-direction: row;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+<body>
+    <div class='header'>
+        <h2>Welcome to my Nodejs website!</h2>
+        <hr/>
+        <table class='header-table'>
+            <tr>
+                <td><a href='/'>Landing Page</a></td>
+                <td><a href='/home'>Home</a></td>
+                <td><a href='/api'>API</a></td>
+            </tr>
+        </table>
+        <hr/>
+    </div>
+    <div class='body'>
+        <table class='body-table'>
+            <tr>
+                <th>Make yourself at home!</th>
+            </tr>
+            <tr>
+                <td>This is my home page!</td>
+            </tr>
+        </table>
+    </div>
+    <div class='footer'>
+        <hr/>
+        <table class='footer-table'>
+            <tr>
+                <td>Twitter</td>
+                <td>Facebook</td>
+                <td>Linkedin</td>
+                <td>Github</td>
+                <td>Bitbucket</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
