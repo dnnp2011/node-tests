@@ -56,3 +56,4 @@ function framePrint(msg, log = false) {
 }
 
 module.exports = framePrint;
+require("../cli-run");

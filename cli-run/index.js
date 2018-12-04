@@ -17,8 +17,6 @@ function parseArgv(rawArgs) {
 }
 
 function groupFunctionCalls(parsedArgs, target) {
-
-
     // Identify what type of export it is: 1. Named Export 2. Named function (exported, class or top-level) 3. Class Instance and Function
     // 3, 4
     // Input: Array of strings [arg1, arg2, arg3] Output: Array of arrays grouping functions with their arguments [[func1, arg1, arg2], [func2, arg1, arg2]]
@@ -208,10 +206,10 @@ module.exports = (function() {
         //BUG: Looking for an instance method of a named class export causes prop not found. (exportedInstanceClass.instanceMethod)
         //BUG: Instantiation the class export above allows the method to be found. Makes static method not return.
         //BUG: (instanceMethod) does not return a valid function without class at beginning
-        filter("namedExport");
+        filter(parseArgv(process.argv));
 
         function filter(input) {
-            //TODO: Add support for methods nested iun classes: Class1.Class2.Class3.methodName
+            //TODO: Add support for methods nested in classes: Class1.Class2.Class3.methodName
             /* Check if the input is a class method reference */
             let exported = this.process.mainModule.exports;
             if (input.includes('.')) {
@@ -437,7 +435,7 @@ module.exports = (function() {
 
             /* If not a class method, must be a class ctor, function, or argument */
             else {
-                let funcName = input.trim().replace(/[^a-zA-Z0-9_\-]+/g, '');
+                let funcName = input.toString().trim().replace(/[^a-zA-Z0-9_\-]+/g, '');
                 /* If Top-Level Export */
                 if (isTopLevelExport(funcName, exported)) {
                     /* Export Not A Primitive */
